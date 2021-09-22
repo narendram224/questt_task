@@ -8,28 +8,25 @@ import useRedux from "../Helper/useRedux"
 import useFormValidator from "../Helper/useValidator"
 import { loginWithMobile } from "../redux/login/loginAction"
 import './Login.css'
+import {withRouter} from 'react-router-dom';
 const staticFilterData=[{value:"91",label:"91"}]
-const LoginPage = () => {
+const LoginPage = ({history}) => {
     const [mobile, setMobile] = useState("")
     const [country_code, setCountry_code] = useState(staticFilterData[0]['value'])
     const   {handleSubmit,errors,setErrors,setIsSubmitting} = useFormValidator(submitData,{mobile}, loginValidator);
     const [{ user, islogin,loader,error }, dispatch] = useRedux('login');
      function submitData (){
-        console.log("submit Called",mobile);
-        // const  loginBodyStr =`{\n    \"country_code\":\"${Number(country_code)}\",\n    \"mobile\":\"${Number(mobile)}\"\n}`
-            
-        //  const loginBodyStr =`{\n    \"country_code\":\"${Number(country_code)}\",\n    \"mobile\":\"${Number(mobile)}\"\n}`
         const loginBody ={
             country_code:"91",
             mobile:"7398608221"
         }
-       
-        // console.log("log",JSON.stringify(loginBodyStr));
-        dispatch(loginWithMobile(loginBody));
+      
+        dispatch(loginWithMobile(loginBody, history));
         setErrors({})
         setIsSubmitting(false)
     }
     const  handleChange = useCallback((e)=>{
+        e.preventDefault();
         setErrors({})
         setIsSubmitting(false)
         setMobile(e.target.value)
@@ -72,4 +69,4 @@ const LoginPage = () => {
     )
 }
 
-export default LoginPage
+export default withRouter(LoginPage)

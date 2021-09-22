@@ -1,35 +1,30 @@
+import produce from "immer";
 import { FETCH_USER_REQUEST, FETCH_USER_SUCCESS, FETCH_USER_FAILURE } from "./loginType";
 
 const initialState ={
     loading:false,
-    users:[],
+    user:{},
     error:''
 }
 
-const loginReducer = (state=initialState,action)=>{
+const loginReducer = produce((state=initialState,action)=>{
     switch (action.type) {
         case FETCH_USER_REQUEST:
-            return{
-                ...state,
-                loading:true
-            }
+            state.loading=true;
+            return state;
         case FETCH_USER_SUCCESS:
-            return{
-                ...state,
-                loading:false,
-                user:action.payload,
-                error:''
-            }
+            state.loading=false;
+            state.user = action.payload;
+            return state;
         case FETCH_USER_FAILURE:
-            return{
-                ...state,
-                loading:false,
-                error:action.payload,
-                user:[]
-            }
+            state.loading=false;
+            state.user = {};
+            state.error = action.payload;
+            return state;
+            
         default:
             return state;
     }
-}
+})
 
 export default loginReducer;

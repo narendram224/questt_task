@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { Send } from "react-feather"
+import { useLocation} from "react-router"
 import ButtonComponent from "../components/atoms/ButtonComponent/ButtonComponent"
 import MainLayout from "../components/atoms/Mainlayout/MainLayout"
 import OptInput from "../components/atoms/OTPInput/OptInput"
@@ -7,26 +8,34 @@ import Spin from "../components/atoms/Spin"
 import otpValidator from "../Helper/optValidator"
 import useRedux from "../Helper/useRedux"
 import useFormValidator from "../Helper/useValidator"
+import { validateOtp } from "../redux/login/loginAction"
 import './opt.css'
-
+import { useAlert } from 'react-alert'
+import { withRouter } from "react-router-dom"
  
-const OtpPage = () => {
+const OtpPage = ({history}) => {
+    const alert = useAlert()
     const [otp, setOtp] = useState("")
+    const {state} = useLocation();
     const   {handleSubmit,errors,setErrors,setIsSubmitting} = useFormValidator(submitData,{otp}, otpValidator);
     const [{ user, islogin,loader,error }, dispatch] = useRedux('login');
+    console.log("data ",state);
     function submitData(){
         console.log("log submit data");
         console.log("errors",errors['otp']);
-        dispatch()
+        let otpBody ={...state,code:otp,
+        device_token:"my device token"}
+        dispatch(validateOtp(otpBody,history,alert))
         setErrors({})
         setIsSubmitting(false)
+        // alert.show('Oh look, an alert!')
     }
     const handleChange =(otp)=>{
-        console.log("otp",otp);
         setOtp(otp)
         setErrors({})
         setIsSubmitting(false)
     }
+
     return (
         <MainLayout>
             <div className="otp_container">
@@ -47,4 +56,4 @@ const OtpPage = () => {
     )
 }
 
-export default OtpPage
+export default withRouter(OtpPage)

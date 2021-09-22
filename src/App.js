@@ -1,20 +1,22 @@
 import './App.css';
 import { Provider } from 'react-redux'
 import { createBrowserHistory } from 'history'
-import { Router, Switch,Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch,Route } from "react-router-dom";
 import PrivateRoute from './PrivateRoute';
 import Spin from './components/atoms/Spin';
 import { lazy, Suspense } from 'react';
 import store from './redux/store';
+
 const LoginPage = lazy(()=>import('./Pages/LoginPage'))
 const DashboardPage = lazy(() => import('./Pages/Dashboard'))
 const OtpPage = lazy(() => import('./Pages/OtpPage'))
 
+
 function App() {
-  const history = createBrowserHistory()
+  // const history = createBrowserHistory()  
   return (
     <Provider store={store}>
-    <Router history={history} inititalRoute={'/'} >
+    <Router  inititalRoute={'/'} >
       <Suspense fallback={<Spin  />}>
         <Switch>
           <Route

@@ -1,5 +1,5 @@
-const BASEURL =process.env.BASE_URL||"https://api.staging.reallearning.sbtechzone.com/api/v1"; 
-// const BASEURL =process.env.BASE_URL||"https://www.getpostman.com/collections/a04e4200156d440a704f";
+// const BASEURL =process.env.BASE_URL||"https://api.staging.reallearning.sbtechzone.com/api/v1"; 
+const BASEURL =process.env.BASE_URL||"https://api.reallearning.sbtechzone.com/api/v1";
 
 export const request = (method="GET",endpoint="",header={},body)=>{
 console.log("the base URL is: " , BASEURL);
@@ -32,7 +32,6 @@ let myHeaders = new Headers();
 
 
     opts.body = JSON.stringify(body)  // body data type must match "Content-Type" header
-    debugger;
   }
        return fetch(`${BASEURL}/${endpoint}`, {
           method: method, // *GET, POST, PUT, DELETE, etc.

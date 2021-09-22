@@ -2,5 +2,5 @@ export {isLoggedIn,wipeLocalStorage,setToken,getAuthToken} from './auth';
 export {request} from './request'
 export {
     loginWithApi,
-    getTeacherDashbaord
+    getTeacherDashbaord,verfiyOtpWithApi
 } from './api';
