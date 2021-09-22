@@ -2,6 +2,7 @@ import { useState,useCallback } from "react"
 import { Send } from "react-feather"
 import ButtonComponent from "../components/atoms/ButtonComponent/ButtonComponent"
 import InputField from "../components/atoms/InputField/InputField"
+import MainLayout from "../components/atoms/Mainlayout/MainLayout"
 import loginValidator from "../Helper/loginValidator"
 import useRedux from "../Helper/useRedux"
 import useFormValidator from "../Helper/useValidator"
@@ -15,15 +16,16 @@ const LoginPage = () => {
     const [{ user, islogin,loader,error }, dispatch] = useRedux('login');
      function submitData (){
         console.log("submit Called",mobile);
-       const  loginBodyStr =`{\n    \"country_code\":\"${Number(country_code)}\",\n    \"mobile\":\"${Number(mobile)}\"\n}`
+        // const  loginBodyStr =`{\n    \"country_code\":\"${Number(country_code)}\",\n    \"mobile\":\"${Number(mobile)}\"\n}`
             
         //  const loginBodyStr =`{\n    \"country_code\":\"${Number(country_code)}\",\n    \"mobile\":\"${Number(mobile)}\"\n}`
         const loginBody ={
-            country_code,
-            mobile
+            country_code:"91",
+            mobile:"7398608221"
         }
+       
         // console.log("log",JSON.stringify(loginBodyStr));
-        dispatch(loginWithMobile(loginBodyStr));
+        dispatch(loginWithMobile(loginBody));
         setErrors({})
         setIsSubmitting(false)
     }
@@ -33,19 +35,12 @@ const LoginPage = () => {
         setMobile(e.target.value)
     },[])
     return (
-        // <div>
-       
-        //     <InputField value={mobile} onChange={handleChange} placeholder="Enter Mobile no" errorMsg={errors['mobile']}  />
-        //     <ButtonComponent label="Get OTP" handleClick={handleSubmit}  />
-        // </div>
-        <div className="container">
-	<div className="screen">
+<MainLayout>
+
+
 		<div className="screen__content">
 			<form className="login">
-				{/* <div className="login__field">
-					<i className="login__icon fas fa-user"></i>
-					<input type="text" className="login__input" placeholder="User name / Email" />
-				</div> */}
+				
                 <div className="login_wrapper">
 
               
@@ -59,12 +54,9 @@ const LoginPage = () => {
                 })}
             </select>
             </div>
-					{/* <i className="login__icon fas fa-lock"></i>
-					<input type="password" className="login__input" placeholder="Password" /> */}
 				</div>
                 <div className="login__field">
-                     <InputField value={mobile} className="login__input" onChange={handleChange} placeholder="Enter Mobile no" errorMsg={errors['mobile']}  />
-					{/* <input type="text"  placeholder="Enter Mobile no" /> */}
+                     <InputField value={mobile} type="text" className="login__input" onChange={handleChange} placeholder="Enter Mobile no" errorMsg={errors['mobile']}  />
 				</div>
                 </div>
                 <ButtonComponent label="Get OTP" className="button login__submit" handleClick={handleSubmit}  >
@@ -75,14 +67,8 @@ const LoginPage = () => {
 			</form>
 			
 		</div>
-		<div className="screen__background">
-			<span className="screen__background__shape screen__background__shape4"></span>
-			<span className="screen__background__shape screen__background__shape3"></span>		
-			<span className="screen__background__shape screen__background__shape2"></span>
-			<span className="screen__background__shape screen__background__shape1"></span>
-		</div>		
-	</div>
-</div>
+        </MainLayout>
+
     )
 }
 

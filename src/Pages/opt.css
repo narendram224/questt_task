@@ -1,0 +1,21 @@
+.otp_container{
+    z-index: 1;
+    /* background-color:red; */
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+.otp_title{
+    text-align: center;
+    font-size:1.2rem;
+}
+.otp_content{
+    z-index: 1;
+    position:absolute;
+    bottom:30%;
+    width: 100%;
+}
+.otp_error{
+    margin-left: 1.5rem;
+    color: tomato;
+}

@@ -1,0 +1,34 @@
+.root {
+    width: 100%;
+    margin: 0 auto;
+  }
+  
+  .scrolling-wrapper-flexbox {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+  
+   
+  }
+  .card {
+    flex: 0 0 auto;
+    width:400px;
+    height:400px;
+  }
+  
+  .card {
+    padding: 5px 10px;
+    margin: 10px;
+    border-radius: 5px;
+    background: #FFBBBB;
+  }
+  
+  .scrolling-wrapper, .scrolling-wrapper-flexbox {
+  
+    width: 100%;
+    -webkit-overflow-scrolling: touch;
+ 
+  }
+  .scrolling-wrapper, .scrolling-wrapper-flexbox ::-webkit-scrollbar {
+    display: none;
+  }

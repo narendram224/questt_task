@@ -27,9 +27,9 @@ function App() {
             path="/otp"
             component={OtpPage}
           />
-          <PrivateRoute
+          <Route
             exact
-            path="/dashboard/:id"
+            path="/dashboard"
             component={DashboardPage}
           />
           </Switch>

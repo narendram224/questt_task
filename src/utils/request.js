@@ -32,6 +32,7 @@ let myHeaders = new Headers();
 
 
     opts.body = JSON.stringify(body)  // body data type must match "Content-Type" header
+    debugger;
   }
        return fetch(`${BASEURL}/${endpoint}`, {
           method: method, // *GET, POST, PUT, DELETE, etc.
