@@ -1,24 +1,41 @@
-import logo from './logo.svg';
 import './App.css';
+import { Provider } from 'react-redux'
+import { createBrowserHistory } from 'history'
+import { Router, Switch,Route } from "react-router-dom";
+import PrivateRoute from './PrivateRoute';
+import Spin from './components/atoms/Spin';
+import { lazy, Suspense } from 'react';
+import store from './redux/store';
+const LoginPage = lazy(()=>import('./Pages/LoginPage'))
+const DashboardPage = lazy(() => import('./Pages/Dashboard'))
+const OtpPage = lazy(() => import('./Pages/OtpPage'))
 
 function App() {
+  const history = createBrowserHistory()
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+    <Router history={history} inititalRoute={'/'} >
+      <Suspense fallback={<Spin  />}>
+        <Switch>
+          <Route
+            exact
+            path="/"
+            component={LoginPage}
+          />
+          <Route
+            exact
+            path="/otp"
+            component={OtpPage}
+          />
+          <PrivateRoute
+            exact
+            path="/dashboard/:id"
+            component={DashboardPage}
+          />
+          </Switch>
+          </Suspense>
+          </Router>
+          </Provider>
   );
 }
 
