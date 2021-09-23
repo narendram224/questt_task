@@ -1,7 +1,16 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+ [LIVE DEMO](https://questt-task.vercel.app/).
+ 
+##STEPS
+1: Clone the project the using the commnad git clone <repo name>
+2: go to. the repo and use yarn/npm install.
+3: for running the command use npm start.
 
+
+  ##Note
+  you should have node install on you PC.
+  
 ## Available Scripts
 
 In the project directory, you can run:
