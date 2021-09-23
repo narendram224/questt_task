@@ -3,14 +3,30 @@
  [LIVE DEMO](https://questt-task.vercel.app/).
  
 ##STEPS
-1: Clone the project the using the commnad git clone <repo name>
-2: go to. the repo and use yarn/npm install.
-3: for running the command use npm start.
+1: Clone the project the using the commnad git clone <repo name> </br>
+2: go to. the repo and use yarn/npm install.</br>
+3: for running the command use npm start.</br>
 
 
   ##Note
   you should have node install on you PC.
-  
+ 
+ ##Performance using lighthous is 87%.
+ 
+ <img width="1440" alt="Screenshot 2021-09-23 at 4 23 43 PM" src="https://user-images.githubusercontent.com/35723915/134495371-827b668f-a777-45c8-b372-c04095f40e6c.png">
+ 
+ 
+ </br>
+ </br>
+ </br>
+ ###Screenshot
+<img width="926" alt="Screenshot 2021-09-23 at 4 28 11 PM" src="https://user-images.githubusercontent.com/35723915/134495825-4c7b40c4-d71f-4e14-a439-7c5d9c3ed5a0.png">
+</br>
+<img width="801" alt="Screenshot 2021-09-23 at 4 28 24 PM" src="https://user-images.githubusercontent.com/35723915/134495850-31fe7a53-6ec1-4f54-a41b-4fc5b3505abb.png">
+</br>
+<img width="1440" alt="Screenshot 2021-09-23 at 4 28 36 PM" src="https://user-images.githubusercontent.com/35723915/134495858-dcca7dd0-217c-463d-bc69-c237ecb4a2fb.png">
+</br>
+
 ## Available Scripts
 
 In the project directory, you can run:
