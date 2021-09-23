@@ -1,6 +1,7 @@
-import { FETCH_USER_REQUEST, FETCH_USER_SUCCESS, FETCH_USER_FAILURE, FETCH_LOGIN_REQUEST, FETCH_LOGIN_SUCCESS, FETCH_LOGIN_FAILURE } from "./loginType"
-import { loginWithApi, verfiyOtpWithApi } from "../../utils"
+import { FETCH_USER_REQUEST, FETCH_USER_SUCCESS, FETCH_USER_FAILURE, FETCH_LOGIN_REQUEST, FETCH_LOGIN_SUCCESS, FETCH_LOGIN_FAILURE, FETCH_LOGOUT_REQUEST, FETCH_LOGOUT_SUCCESS, FETCH_LOGOUT_FAILURE } from "./loginType"
+import { loginWithApi, setToken, setUserName, verfiyOtpWithApi, wipeLocalStorage } from "../../utils"
 import {  positions} from 'react-alert'
+import { logoutWithApi } from "../../utils/api"
  const loginRequest = ()=>{
     return {
         type:FETCH_USER_REQUEST
@@ -37,6 +38,24 @@ export const loginWithMobile = (body,history)=>{
     }
 }
 
+export const logoutViaApi = (body,history)=>{
+    return (dispatch)=>{
+            dispatch({type:FETCH_LOGOUT_REQUEST});
+            wipeLocalStorage()
+            logoutWithApi(body)
+            .then( response=>{
+                    const user = response;
+                    dispatch({type:FETCH_LOGOUT_SUCCESS})
+                    history.push({pathname: '/otp',
+                    state: body});
+            })
+            .catch((err)=>{
+                const error = err.message;
+                dispatch({type:FETCH_LOGOUT_FAILURE})
+            })
+    }
+}
+
 export const validateOtp = (body,history,alert)=>{
     return (dispatch)=>{
             dispatch(loginRequest);
@@ -50,7 +69,9 @@ export const validateOtp = (body,history,alert)=>{
                         position:positions.TOP_CENTER}
                     )
                 }else{
+                    setToken(true);
                     const user = response['data'];
+                    setUserName(user['name'])
                     dispatch(loginSuccess(user))
                     history.push('/dashboard');
                 }

@@ -29,7 +29,7 @@ function App() {
             path="/otp"
             component={OtpPage}
           />
-          <Route
+          <PrivateRoute
             exact
             path="/dashboard"
             component={DashboardPage}

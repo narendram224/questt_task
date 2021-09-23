@@ -15,7 +15,17 @@ import { request } from "./request"
   return request("POST",`login`,{},body).then((res)=>res.json()).then(result=>result)
          
   }
-  export const verfiyOtpWithApi =(body)=>{
-    return request("POST",`verify-otp?includes=preference`,{},body).then((res)=>res.json()).then(result=>result)
+  export const logoutWithApi =(body)=>{
+    return request("POST",`logout`,{},body).then((res)=>res.json()).then(result=>result)
            
+    }
+  export const verfiyOtpWithApi =(body)=>{
+    return request("POST",`verify-otp`,{},body).then((res)=>res.json()).then(result=>result)
+       
+    }
+export const fetchSubjectWithApi =(query,body)=>{
+      return request("GET",`teacher/subject?${query}`,{},body).then((res)=>res.json()).then(result=>result)
+}
+export const fetchChapterWithApi =(query)=>{
+        return request("GET",`verify-otp?${query}`,{}).then((res)=>res.json()).then(result=>result)
     }

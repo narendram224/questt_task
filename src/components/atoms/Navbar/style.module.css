@@ -9,9 +9,9 @@ a {
     margin: 0 auto;
     padding:0 15px;
    
-    position: fixed;
+    /* position: fixed;
     top: 25px;
-    margin-bottom: 70px;
+    margin-bottom: 70px; */
   }
   
   
@@ -28,6 +28,10 @@ a {
   .navbar {
     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
     height: 70px;
+    position: fixed;
+    background-color: white;
+    z-index: 4;
+    top: 0;
   }
     
    .navbar_menu {

@@ -25,6 +25,9 @@
     border-radius: 5px;
     background: #FFBBBB;
   } */
+  .item_title{
+    margin: 0;
+  }
   
   .scrolling-wrapper, .scrolling-wrapper-flexbox {
   
@@ -34,4 +37,8 @@
   }
   .scrolling-wrapper, .scrolling-wrapper-flexbox ::-webkit-scrollbar {
     display: none;
+  }
+  .product_grid{
+    margin-top: 70px;
+    padding-top: 10px;
   }

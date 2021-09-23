@@ -1,14 +1,21 @@
 export const isLoggedIn = token => {
     const storedToken = getAuthToken()
-    return (token || storedToken ? true : false)
+    return storedToken;
 }
 
 export const wipeLocalStorage = () => {
-    localStorage.removeItem('Authorization');
+    localStorage.clear();
 }
 export const getAuthToken = () => {
-    return localStorage.getItem('Authorization')
+    return localStorage.getItem('isLoggedIn')
   }
-  export const setToken = token => {
-    localStorage.setItem('Authorization', token);
+  export const getUserName = () => {
+    return localStorage.getItem('name')
+  }
+  export const setToken = bool => {
+    localStorage.setItem('isLoggedIn', bool);
+  }
+
+  export const setUserName = name => {
+    localStorage.setItem('name', name);
   }

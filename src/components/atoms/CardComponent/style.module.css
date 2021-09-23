@@ -6,8 +6,9 @@ a
     width: 380px;
     position: relative;
     box-shadow: 0 2px 7px #dfdfdf;
-    margin: 50px 20px;
+    margin: 20px 20px;
     background: #fafafa;
+    border-radius: 10px;
 }
 
 .badge {

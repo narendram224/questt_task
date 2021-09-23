@@ -11,31 +11,11 @@ let myHeaders = new Headers();
     myHeaders.append('Accept','*/*')
     myHeaders.append('Connection','keep-alive')
     myHeaders.append('Accept-Encoding','gzip,deflate,br')
+    myHeaders.append('Cookie','cookieName="cookieValue"; Secure; HttpOnly')
 
-  let opts  ={
-    headers: {}
-  };
-  if (body instanceof FormData) {
-    opts.body = body
-  } else {
-    if (header.token) {
-        opts.headers['Authorization'] = `Bearer ${header.token}`; 
-      
-        }
-    opts.headers['Access-Control-Allow-Origin'] ="*"
-    opts.headers['Content-Type'] = 'application/json'
-    opts.headers['Accept'] = 'application/json'
-    opts.headers['Accept'] = '*/*'
-    opts.headers['Connection'] = 'keep-alive'
-    opts.headers['Accept-Encoding']='gzip,deflate,br'
-
-
-
-    opts.body = JSON.stringify(body)  // body data type must match "Content-Type" header
-  }
        return fetch(`${BASEURL}/${endpoint}`, {
           method: method, // *GET, POST, PUT, DELETE, etc.
-          body: opts.body,
+          body: JSON.stringify(body),
           headers:myHeaders
 
         });
