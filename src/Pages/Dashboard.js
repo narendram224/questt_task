@@ -31,7 +31,7 @@ const DashboardPage = () => {
                   {
                     !loading['subjects'] ? subjects.map((subject) => {
                       return (
-                        <div className="product_grid">
+                        <div className="product_grid" key={subject['id']}>
                           <div className="item_title">
                             <span ><Film /></span>
                             <h2>{subject && subject['chapter'] && subject['chapter'][0]['subject'] ? subject['chapter'][0]['subject'] : "No Data"}</h2>
@@ -40,7 +40,7 @@ const DashboardPage = () => {
                             {
                               subject['chapter'] && Array.isArray(subject['chapter']) && subject['chapter'][0]['data'].map((item) => {
                                 return (
-                                  <CardComponent quest_count={item['quest_count']} subject={subject['chapter'][0]['subject']} title={item['title']} type={item['type']} />
+                                  <CardComponent key={item['id']} quest_count={item['quest_count']} subject={subject['chapter'][0]['subject']} title={item['title']} type={item['type']} />
                                 )
                               })
 

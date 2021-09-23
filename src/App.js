@@ -12,7 +12,6 @@ const OtpPage = lazy(() => import('./Pages/OtpPage'))
 
 
 function App() {
-  // const history = createBrowserHistory()  
   return (
     <Provider store={store}>
     <Router  inititalRoute={'/'} >
