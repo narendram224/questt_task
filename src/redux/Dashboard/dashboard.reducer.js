@@ -13,21 +13,30 @@ const initialState={
 
     switch (action.type) {
         case FETCH_SUBJECT_REQUEST:
+            state.loading.subjects=true;
+            state.error.subjects="";
 
             return state;
         case FETCH_SUBJECT_SUCCESS:
+            state.loading.subjects=false;
+            state.subjects = action.payload;
+            state.error.subjects = "";
 
             return state; 
      case FETCH_SUBJECT_FAILURE:
+        state.loading.subjects=false;
+        state.error.subjects=action.payload;
 
         return state; 
     case FETCH_CHAPTER_REQUEST:
+        state.oading.chapters=true;
             
             return state;
         case FETCH_CHAPTER_SUCCESS:
-
+            state.loading.chapters=false;
             return state; 
      case FETCH_CHAPTER_FAILURE:
+        state.loading.chapters=false;
 
         return state;  
     default:

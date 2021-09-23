@@ -10,10 +10,7 @@ const OptInput = ({valueArr,handleChange}) => {
         numInputs={5}
         separator={<span>-</span>}
       />
-        {/* <input type="text" id="sec" maxLength="1" onkeyup="clickEvent(this,'third')" />
-        <input type="text" id="third" maxLength="1" onkeyup="clickEvent(this,'fourth')" />
-        <input type="text" id="fourth" maxLength="1" onkeyup="clickEvent(this,'fifth')" />
-        <input type="text" id="fifth" maxLength="1" /> */}
+       
     </div>
     )
 }

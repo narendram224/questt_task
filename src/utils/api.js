@@ -12,11 +12,11 @@ import { request } from "./request"
   }
 //   login Api call here
   export const loginWithApi =(body)=>{
-  return request("POST",`login`,{},body).then((res)=>res.json()).then(result=>result)
+  return request("POST",`teacher/signup`,{},body).then((res)=>res.json()).then(result=>result)
          
   }
   export const logoutWithApi =(body)=>{
-    return request("POST",`logout`,{},body).then((res)=>res.json()).then(result=>result)
+    return request("POST",`logout`,{token:getAuthToken()},body).then((res)=>res.json()).then(result=>result)
            
     }
   export const verfiyOtpWithApi =(body)=>{
@@ -24,8 +24,8 @@ import { request } from "./request"
        
     }
 export const fetchSubjectWithApi =(query,body)=>{
-      return request("GET",`teacher/subject?${query}`,{},body).then((res)=>res.json()).then(result=>result)
+      return request("GET",`teacher/subject?${query}`,{token:getAuthToken()},body).then((res)=>res.json()).then(result=>result)
 }
 export const fetchChapterWithApi =(query)=>{
-        return request("GET",`verify-otp?${query}`,{}).then((res)=>res.json()).then(result=>result)
+        return request("GET",`teacher/chapter?${query}`,{token:getAuthToken()}).then((res)=>res.json()).then(result=>result)
     }

@@ -21,15 +21,24 @@ import { logoutWithApi } from "../../utils/api"
     }
 }
 
-export const loginWithMobile = (body,history)=>{
+export const loginWithMobile = (body,history,alert)=>{
     return (dispatch)=>{
             dispatch({type:FETCH_LOGIN_REQUEST});
             loginWithApi(body)
             .then( response=>{
+                if(response.errors){
+                   
+                    alert.error(`Error:${response.errors[0]&&response.errors[0]['detail']}`, {
+                        timeout: 4000,
+                        offset: '100px',
+                        position:positions.TOP_CENTER}
+                    )
+                }else{
                     const user = response;
                     dispatch({type:FETCH_LOGIN_SUCCESS})
                     history.push({pathname: '/otp',
                     state: body});
+                }
             })
             .catch((err)=>{
                 const error = err.message;
@@ -38,16 +47,27 @@ export const loginWithMobile = (body,history)=>{
     }
 }
 
-export const logoutViaApi = (body,history)=>{
+export const logoutViaApi = (history)=>{
     return (dispatch)=>{
             dispatch({type:FETCH_LOGOUT_REQUEST});
-            wipeLocalStorage()
-            logoutWithApi(body)
+            
+            logoutWithApi()
             .then( response=>{
-                    const user = response;
+                if(response.errors){
+                   
+                    alert.error(`Error:${response.errors[0]&&response.errors[0]['detail']}`, {
+                        timeout: 4000,
+                        offset: '100px',
+                        position:positions.TOP_CENTER}
+                    )
+                }else{
+                    
+                    history.push('/');
+                    wipeLocalStorage()
                     dispatch({type:FETCH_LOGOUT_SUCCESS})
-                    history.push({pathname: '/otp',
-                    state: body});
+                   
+                }
+
             })
             .catch((err)=>{
                 const error = err.message;
@@ -61,7 +81,6 @@ export const validateOtp = (body,history,alert)=>{
             dispatch(loginRequest);
             verfiyOtpWithApi(body)
             .then( response=>{
-                console.log("res",response)
                 if(response.errors){
                     alert.error(`Error:${response.errors[0]&&response.errors[0]['detail']}`, {
                         timeout: 4000,
@@ -69,9 +88,9 @@ export const validateOtp = (body,history,alert)=>{
                         position:positions.TOP_CENTER}
                     )
                 }else{
-                    setToken(true);
-                    const user = response['data'];
-                    setUserName(user['name'])
+                    setToken(response['data']&&response['data']['token']);
+                    const user = response['data']['user']['data'];
+                    setUserName(user['name']||"User")
                     dispatch(loginSuccess(user))
                     history.push('/dashboard');
                 }

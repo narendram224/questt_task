@@ -1,6 +1,5 @@
 import './App.css';
 import { Provider } from 'react-redux'
-import { createBrowserHistory } from 'history'
 import { BrowserRouter as Router, Switch,Route } from "react-router-dom";
 import PrivateRoute from './PrivateRoute';
 import Spin from './components/atoms/Spin';
